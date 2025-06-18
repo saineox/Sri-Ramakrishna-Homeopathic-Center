@@ -3,16 +3,20 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://itsvanon.github.io/Sri-Ramakrishna-Homeopathic-Center/",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "lucide-react": "^0.344.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.14.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",
@@ -23,11 +27,113 @@
     "eslint": "^9.9.1",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.11",
+    "gh-pages": "^6.3.0",
     "globals": "^15.9.0",
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.3.0",
     "vite": "^5.4.2"
+  },
+  "main": "src/main.tsx",
+  "files": [
+    "src",
+    "index.html",
+    "vite.config.ts"
+  ],
+  "eslintConfig": {
+    "extends": [
+      "plugin:react/recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:react-hooks/recommended",
+      "plugin:jsx-a11y/recommended",
+      "prettier"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaVersion": 2020,
+      "sourceType": "module",
+      "jsx": true
+    },
+    "plugins": [
+      "react",
+      "@typescript-eslint",
+      "react-hooks",
+      "jsx-a11y"
+    ],
+    "rules": {
+      "react/react-in-jsx-scope": "off",
+      "react/prop-types": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "error"
+      ],
+      "jsx-a11y/anchor-is-valid": "off"
+    }
+  },
+  "vite": {
+    "plugins": [
+      "@vitejs/plugin-react"
+    ],
+    "base": "/Sri-Ramakrishna-Homeopathic-Center/",
+    "server": {
+      "port": 3000,
+      "strictPort": true
+    },
+    "build": {
+      "outDir": "dist",
+      "assetsDir": "assets",
+      "rollupOptions": {
+        "output": {
+          "entryFileNames": "src/main.tsx",
+          "chunkFileNames": "src/[name].js",
+          "assetFileNames": "src/assets/[name].[ext]"
+        }
+      }
+    }
+  },
+  "name": "Deploy to GitHub Pages",
+  "on": {
+    "push": {
+      "branches": [
+        "main"
+      ]
+    }
+  },
+  "jobs": {
+    "build-and-deploy": {
+      "runs-on": "windows-latest",
+      "steps": [
+        {
+          "name": "Checkout",
+          "uses": "actions/checkout@v3"
+        },
+        {
+          "name": "Setup Node.js",
+          "uses": "actions/setup-node@v3",
+          "with": {
+            "node-version": "18"
+          }
+        },
+        {
+          "name": "Install Dependencies",
+          "run": "npm install"
+        },
+        {
+          "name": "Build",
+          "run": "npm run build"
+        },
+        {
+          "name": "Deploy",
+          "uses": "JamesIves/github-pages-deploy-action@v4",
+          "with": {
+            "folder": "dist",
+            "branch": "gh-pages"
+          }
+        }
+      ]
+    }
+  },
+  "redirect": {
+    "index.html": "<!DOCTYPE html>\n<html>\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Redirecting...</title>\n    <script>\n      sessionStorage.redirect = location.href;\n      location.href = '/Sri-Ramakrishna-Homeopathic-Center/';\n    </script>\n  </head>\n  <body>\n    Redirecting...\n  </body>\n</html>"
   }
 }
