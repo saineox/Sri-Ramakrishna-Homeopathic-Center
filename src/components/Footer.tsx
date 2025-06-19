@@ -12,11 +12,12 @@ const Footer: React.FC = () => {
             <div className="lg:col-span-1">
               <div className="flex items-center space-x-3 mb-6">
                 <div className="relative">
-                  <img 
-                    src="/Logo.png" 
-                    alt="श्रीरामकृष्ण होमिओपैथिक सेंटर Logo" 
-                    className="w-16 h-16 object-contain bg-white rounded-full p-2"
-                  />
+                  <div className="w-12 h-12 bg-gradient-to-br from-homeo-green-400 to-homeo-orange-400 rounded-full flex items-center justify-center">
+                    <span className="text-white font-bold text-xl font-playfair">MC</span>
+                  </div>
+                  <div className="absolute -top-1 -right-1 w-6 h-6 bg-homeo-orange-400 rounded-full flex items-center justify-center">
+                    <span className="text-white text-xs font-bold">405°</span>
+                  </div>
                 </div>
                 <div>
                   <h3 className="text-xl font-bold font-playfair">श्रीरामकृष्ण होमिओपैथिक सेंटर</h3>

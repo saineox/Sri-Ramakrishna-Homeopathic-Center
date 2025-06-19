@@ -32,11 +32,12 @@ const Header: React.FC = () => {
           {/* Logo */}
           <div className="flex items-center space-x-3">
             <div className="relative">
-              <img 
-                src="/Logo.png" 
-                alt="श्रीरामकृष्ण होमिओपैथिक सेंटर Logo" 
-                className="w-16 h-16 object-contain"
-              />
+              <div className="w-12 h-12 bg-gradient-to-br from-homeo-green-600 to-homeo-orange-500 rounded-full flex items-center justify-center">
+                <span className="text-white font-bold text-xl font-playfair">MC</span>
+              </div>
+              <div className="absolute -top-1 -right-1 w-6 h-6 bg-homeo-orange-500 rounded-full flex items-center justify-center">
+                <span className="text-white text-xs font-bold">405°</span>
+              </div>
             </div>
             <div>
               <h1 className="text-2xl font-bold font-playfair text-homeo-green-700">
