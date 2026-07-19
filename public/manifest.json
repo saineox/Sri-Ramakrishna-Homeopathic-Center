@@ -1,0 +1,21 @@
+{
+  "name": "श्रीरामकृष्ण होमिओपैथिक सेंटर",
+  "short_name": "SRHC Homeopathy",
+  "description": "Dr. Nandkumar Krishna Gavde - M.D. (Hom). Complete Homeopathic Treatment & Reversal pathways.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FAF7F2",
+  "theme_color": "#1B5E3C",
+  "dir": "ltr",
+  "lang": "mr-IN",
+  "categories": ["medical", "health", "lifestyle"],
+  "icons": [
+    {
+      "src": "/Logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
